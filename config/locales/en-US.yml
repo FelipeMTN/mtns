@@ -1,0 +1,732 @@
+### This is the language file.
+
+### Use "\n" to create new lines or simply add an Enter symbol if the key uses multiline strings (must start with |).
+### In most circumstances, using markdown formatting (like **bold**) is allowed but not guaranteed to work.
+
+### Words in curly brackets: { } are placeholders for dynamic data, such as usernames, reasons etc.
+### No matter the language this file is in, placeholders should be left in English, as they are replaced by the bot during runtime.
+
+##################################
+############ GENERIC #############
+##################################
+generic.none: "None"
+generic.id: "ID"
+
+generic.yes: "Yes"
+generic.no: "No"
+
+generic.pagination: "Page {page}/{total_count}, showing {amount_per_page}" # Available placeholders: {page} {total_count} {amount_per_page}
+
+generic.errors.guild_only: "This command can only be used in a server."
+generic.errors.guild_invalid: "The server could not be found."
+
+generic.errors.not_commission: "This is not a commission channel."
+generic.errors.not_commission_or_archived: "This is not a commission channel or this is an archived ticket."
+generic.errors.not_application: "This is not an application channel."
+generic.errors.not_comm_or_app: "This is not a commission or an application channel."
+generic.errors.not_support: "This is not a support channel."
+generic.errors.not_any_ticket: "This is not a ticket channel."
+
+generic.errors.member_undefined: "This member could not be found."
+generic.errors.channel_invalid: "This channel has been deleted."
+generic.errors.must_be_manager: "You must be a manager to do this."
+generic.errors.must_be_freelancer: "You must be a freelancer to do this."
+
+generic.errors.commission_not_assigned_to_freelancer: "This commission has not been claimed by a freelancer."
+
+generic.errors.time.bad_format: "Invalid time format."
+generic.errors.not_number: "Invalid number specified."
+
+generic.enable_text: "Enable"
+generic.already_enabled_text: "Already Enabled"
+generic.disable_text: "Disable"
+generic.already_disabled_text: "Already Disabled"
+generic.dismiss_text: "Dismiss"
+generic.invalid_field_text: "Invalid field"
+
+##################################
+############ TICKETS #############
+##################################
+
+tickets.commission_welcome: |
+  **Welcome to your ticket.**
+  Before inquiring about a project, please answer some questions that will help us categorize the ticket and provide quicker responses.
+
+tickets.application_welcome: |
+  **Welcome to your application**.
+  Please fill it up as truthfully as you can, otherwise you will not be accepted.
+  __We are also not accepting freelancers with experience span of less than 1 year.__
+
+tickets.support_welcome: |
+  **Welcome to your support ticket**.
+  A staff member will be with you any moment.
+
+tickets.on_cooldown: "Please wait {relative} before creating another ticket." # Available placeholders: {relative} {seconds} {minutes} [hours] {ms}
+# When a user creates a commission ticket for the first time, this welcome message will be sent.
+# {MENTION} @ the author. If used, it will not actually ping the user, since the text is in an embed.
+# {USERNAME} raw text username of the ticket author.
+tickets.commission.welcome_new_user: |
+  **Hello, {MENTION}!**
+  **Thank you for choosing Light Services.**
+
+  It looks like this is your first commission made here.
+  - If you are unsure on how our server works, there is a channel explaining how it works in detail: <#894601836064030830>.
+  - We also have a channel for <#931895055621447781>, open to browsing.
+  - It is also important to mention that we have a <#894604691021918248> you should follow during the commission process.
+  - If you need any assistance, do not hesitate to ping any of our <@&891282740492791809>s or open a [support ticket](https://discord.com/channels/891282611480186920/894601878246129694/1099295425678278656).
+
+# When ping preference is enabled in the config, these messages will be sent when a commission ticket is created.
+tickets.ping_preference.currently_on: |
+  By using the buttons below, you can control whether you'd want to be mentioned every time a freelancer sends you a message or a quote.
+  Currently you **will be pinged**.
+tickets.ping_preference.currently_off: |
+  By using the buttons below, you can control whether you'd want to be mentioned every time a freelancer sends you a message or a quote.
+  Currently you **will not be pinged**.
+
+tickets.ping_preference.errors.not_author: "Only the ticket creator can change this."
+
+tickets.topic_pattern.commission: "🎫 Commission created by {mention}" # Available placeholders: {mention} {username}
+tickets.topic_pattern.application: "🎫 Application created by {mention}" # Available placeholders: {mention} {username}
+tickets.topic_pattern.support: "🎫 Support ticket created by {mention}" # Available placeholders: {mention} {username}
+
+tickets.archive.button_label: "Archive"
+tickets.archive.errors.archived_category_not_category: "Invalid archived tickets category specified in settings."
+tickets.archive.errors.bad_archived_category: "Failed to move channel to closed tickets category: {message}" # Available placeholders: {message}
+tickets.archive.errors.archived_category_full: |
+  **Warning:** Archived category is full (has 50 channels) or the 500 global channels limit has been reached.
+  Please create a new one and set it or empty this one.
+  Ticket won't be moved.
+tickets.archive.successful.title: "This ticket has been archived."
+tickets.archive.successful.content: "Transcript is sent below."
+tickets.archive.successful.reason_text: "Reason"
+
+tickets.archive.dm_notification: "Your ticket {ticket_name} has been archived. Transcript has been generated and sent."
+
+tickets.archive.log.title: "Ticket archived"
+tickets.archive.log.field_label_ticket: "Ticket"
+tickets.archive.log.field_label_author: "Author"
+tickets.archive.log.field_label_time: "Time"
+
+tickets.unarchive.button_label: "Unarchive"
+tickets.unarchive.errors.failed_to_move: "Failed to move channel to open tickets category: {message}" # Available placeholders: {message}
+tickets.unarchive.successful.title: "This ticket has been unarchived."
+
+tickets.no_quotes_reminder: |
+  **It appears that no freelancers are quoting.**
+  If you want to keep searching, you can bump this ticket to be on top - just ask our managers.
+  In case you no longer need this, please notify our managers to archive.
+  **Thank you for your patience.**
+
+tickets.no_quotes_reminder.title: "Reminder"
+
+tickets.cancel.errors.not_author: "Only the author of this ticket can cancel it."
+tickets.cancel.button_label: "Cancel Creation"
+
+ticketing.author_left: "The author of this ticket has left the server. This ticket can be safely archived."
+
+commissions.log.title: "New Commission Submitted"
+commissions.log.tag.claimed: "[CLAIMED]"
+commissions.log.tag.archived: "[ARCHIVED]"
+commissions.log.field_label_ticket: "Ticket"
+commissions.log.field_label_service: "Service"
+commissions.finish_prompting.title: "Thanks for answering all the questions."
+commissions.finish_prompting.content: "We will reply to you as soon as we find a suitable freelancer."
+
+commissions.service_selector.label: "Service"
+commissions.service_selector.description: "Select the service you want to create the commission for."
+commissions.service_selector.placeholder: "Select a service..."
+
+applications.log.title: "New Application Submitted"
+applications.log.field_label_ticket: "Ticket"
+applications.log.field_label_service: "Service(s)"
+applications.finish_prompting.title: "Thanks for submitting your application."
+applications.finish_prompting.content: "The management team will reply to you soon."
+
+applications.service_selector.label: "Service(s)"
+applications.service_selector.description: "Select up to {max} service(s) you'd like to apply for and accept commission for." # Available placeholders: {min} {max}
+applications.service_selector.placeholder: "Select up to {max} service(s)..." # Available placeholders: {min} {max}
+
+bank.service_cut_transaction_note: "Service cut for order `{ticket_name}`" # Available placeholders: {ticket_name}
+bank.revenue_transaction_note: "Revenue for order `{ticket_name}`" # Available placeholders: {ticket_name}
+
+prompt.validation.text.no_content: "You must provide a response. If you're sending an attachment, please send a message along with it."
+prompt.validation.text.min_exceeded: "The text specified is too short. The minimum length allowed is `{min}`." # Available placeholders: {min}
+prompt.validation.text.max_exceeded: "The text specified is too long. The maximum length allowed is `{max}`." # Available placeholders: {max}
+prompt.validation.number.not_number: "This is not a valid number. Please enter a valid number:"
+prompt.validation.number.min_exceeded: "The specified number is too low. Please enter a number greater than {min}:" # Available placeholders: {min}
+prompt.validation.number.max_exceeded: "The specified number is too high. Please enter a number lower than {max}:" # Available placeholders: {max}
+prompt.validation.budget.not_number: "This is not a valid budget. Please enter a number or 'quote':"
+prompt.validation.budget.min_exceeded: "The specified budget is too low. Please enter a budget greater than ${min}:" # Available placeholders: {min}
+prompt.validation.budget.max_exceeded: "The specified budget is too high. Please enter a budget lower than ${max}:" # Available placeholders: {max}
+
+trial.reminder.title: "Trial Reminder"
+trial.reminder: | # Available placeholders: {mention} {username} {trial_name} {relative_time}
+  > Hello, {mention}.
+  **This is a reminder that you have an active trial for {trial_name}.**
+  You deadline is up {relative_time}.
+  If you do not wish to continue with the trial anymore, please let any of our managers know.
+
+trial.deadline_up.title: "Trial Deadline Up"
+trial.deadline_up: | # Available placeholders: {mention} {username} {trial_name}
+  > Hello, {mention}.
+  **The deadline for the {trial_name} trial is up.**
+  Please send your finished product within 3 hours of this message or the application will be rejected.
+  If you do not wish to continue with the trial anymore, please let any of our managers know.
+
+review.title: "Review"
+review.footer: "Review ID: {id}" # Available placeholders: {id}
+review.field_label_freelancer: "Freelancer"
+review.field_label_customer: "Customer"
+review.field_label_rating: "Rating"
+review.field_label_message: "Message"
+review.anonymous: "Anonymous"
+
+transcript.prefix: "-- Ticket start --"
+transcript.empty: "No messages from valid members found."
+transcript.file.tag.deleted: "(DELETED)"
+transcript.file.tag.edited: "(edited)"
+transcript.file.no_content: "[Embed]"
+transcript.file.attachment_count: "{count} attachment(s):" # Available placeholders: {count}
+transcript.file.attachment_n: "[Attachment {index}: {url}]" # Available placeholders: {index} {url} {discordUrl} {proxyUrl}
+transcript.file.time_format: "DD MMM YYYY h:mm a" # Refer to https://day.js.org/docs/en/display/format#list-of-all-available-formats.
+
+##################################
+############ COMMANDS ############
+##################################
+
+# /application
+commands.application.accepted: | # Available placeholders: {username}
+  **Your application has been accepted.**
+  Please read <#931647647364816936> whenever able but possibly ASAP.
+
+  New commissions will be shown in the channels under the "Commissions" category. You will @pinged as well.
+
+  If you have any questions, feel free to ask management.
+
+commands.application.accepted_short: "Application Accepted"
+
+commands.application.denied: | # Available placeholders: {username} {reason}
+  **Your application has been denied.**
+  Reason: *{REASON}*
+
+  If you have any questions, feel free to ask management.
+
+commands.application.denied_short: "Application Denied"
+
+# /trial
+commands.trial.trial_title: "{name} Trial" # Available placeholders: {name} {deadline}
+commands.trial.created: "Trial created."
+commands.trial.errors.not_found: "Invalid trial name."
+
+# /bank balance
+commands.bank.balance.balance_text: "Balance"
+commands.bank.balance.last_transactions_text: "Last Transactions"
+
+# /bank withdraw
+commands.bank.withdraw.channel_not_configured: "The withdrawals channel is not configured. Withdrawals are disabled."
+commands.bank.withdraw.channel_invalid: "The withdrawals channel is not configured or was deleted. Withdrawals are disabled."
+commands.bank.withdraw.below_1: "You can withdraw less than $1."
+commands.bank.withdraw.not_enough_funds: | # Available placeholders: {current_balance} {requested_amount}
+  You don't have enough money in your bank to withdraw that amount.
+  You only have: {current_balance}
+  Requested: {requested_amount}
+commands.bank.withdraw.successful: "Withdrawal request sent."
+# /bank transactions
+commands.bank.transactions.title: "Transactions"
+commands.bank.transactions.empty: "You have no transactions."
+commands.bank.transactions.default_note: "No note added."
+
+# /fee
+commands.fee: | # Available placeholders: {will_be_paid, freelancer_cut_percentage, original_amount, amount_to_quote}
+  You will be paid **${will_be_paid}** (*{freelancer_cut_percentage}%*) if you quote **${original_amount}**.
+  To receive **${original_amount}**, charge **${amount_to_quote}**.
+
+# /managebanks add
+commands.managebanks.add.default_note: "Added by administrator."
+commands.managebanks.add.successful: "Added **${amount}** to {mention}'s bank." # Available placeholders: {mention} {username} {amount}
+
+# /managebanks subtract
+commands.managebanks.subtract.default_note: "Subtracted by administrator."
+commands.managebanks.subtract.successful: "Subtracted **${amount}** from {mention}'s bank." # Available placeholders: {mention} {username} {amount}
+
+# /managebanks view
+commands.managebanks.view.successful: "{mention}'s bank balance is **${balance}**." # Available placeholders: {mention} {username} {balance}
+
+# /managebanks withdrawals
+commands.managebanks.withdrawals.title.all: "Withdrawal Requests"
+commands.managebanks.withdrawals.title.pending: "Pending Withdrawal Requests"
+commands.managebanks.withdrawals.field_name: "{username} for {amount}"
+commands.managebanks.withdrawals.field_value: "**Created:** {created_at}\n**Status:** {status}"
+
+# /claim
+commands.claim.errors.already_claimed: "This ticket has already been claimed by {mention}." # Available placeholders: {mention} {username}
+commands.claim.errors.already_complete: "This commission ticket has already been marked as completed."
+commands.claim.successful: "**{mention}** has claimed this commission."
+commands.claim.successful.title: "Commission Claimed"
+
+# /complete
+# The message that appears when the order is /complete'd. The optional message from freelancer is appended at the end automatically.
+commands.complete.embed: |
+  **Use the buttons below to either accept the delivery or deny.**
+  Keep in mind that accepting the delivery finalizes it and you have up to 2 weeks for changes within the scope of the original order.
+  Refunds are not allowed after accepting the delivery.
+commands.complete.embed.title: "Commission Marked As Complete"
+commands.complete.message_from_freelancer: "Message from freelancer"
+commands.complete.errors.no_invoice: "No invoice has been made for this order. Please cancel the order or create an invoice."
+commands.complete.errors.invoice_not_paid: "The invoice has to be paid for before you can complete this order."
+commands.complete.errors.already_complete: "This commission ticket has already been marked as completed."
+
+completion.button.accept: "Accept"
+completion.button.deny: "Deny"
+
+# /deadline
+commands.deadline.errors.time.too_low: "The minimum duration is {seconds} seconds." # Available placeholders: {seconds}
+commands.deadline.deadline_text: "Deadline"
+commands.deadline.expires_text: "Expires"
+
+# /blacklist add
+commands.blacklist.add.errors.self_blacklist: "You can't blacklist yourself."
+commands.blacklist.add.errors.person_already_blacklisted: "{username} is already blacklisted." # Available placeholders: {mention} {username}
+commands.blacklist.add.successful: "Successfully blocked {username} from using the bot."
+
+# /blacklist remove
+commands.blacklist.remove.errors.person_not_blacklisted: "{username} is not blacklisted." # Available placeholders: {username} {mention}
+
+commands.blacklist.remove.successful: "Successfully unblacklisted {username} from using the bot." # Available placeholders: {username} {mention}
+
+# /blacklist status
+commands.blacklist.status.successful: "{username} is {status}." # Available placeholders: {username} {mention} {status}
+# injected at {status}
+commands.blacklist.status.status_is_blacklisted: "is blacklisted"
+commands.blacklist.status.status_is_allowed: "is not blacklisted"
+
+# /panel
+commands.panel.successful: "Created the panel."
+
+# /panel tickets
+## panel.ticket button labes are configurable in the appropriate config file.
+
+# /panel bank
+panel.bank.title: "💰 Bank Management"
+panel.bank.button_label.view_balance: "View My Balance"
+panel.bank.button_label.list_transactions: "Transactions List"
+
+# /panel profile
+panel.profile.title: "Freelancer's Profile Management"
+panel.profile.button_label.set_bio: "Set your bio"
+panel.profile.button_label.set_portfolio: "Set your portfolio link"
+panel.profile.button_label.set_techstack: "Set your techstack"
+panel.profile.button_label.set_timezone: "Set your timezone"
+panel.profile.button_label.set_paypal: "Set your PayPal email"
+panel.profile.button_label.view_own_profile: "View your profile"
+panel.profile.button_label.view_other_profile: "Look up other's profile"
+
+# /setservicechannel
+commands.setservicechannel.errors.generic: "An error occurred while setting the commission log channel."
+commands.setservicechannel.errors.channel_not_text: "Invalid channel type. Please provide a text channel as the argument."
+commands.setservicechannel.errors.invalid_service: "Invalid service name."
+commands.setservicechannel.updated_existing: "Successfully set commission log channel for {service_name} to {channel_mention}." # Available placeholders: {service_name} {channel_mention} {channel_name}
+commands.setservicechannel.created: "Successfully set commission log channel for {service_name} to {channel_mention}." # Available placeholders: {service_name} {channel_mention} {channel_name}
+
+# /ticketinfo
+
+commands.ticketinfo.title: "Ticket #{serial}" # Available placeholders: {ticket_id} {serial}
+commands.ticketinfo.field_title.serial: "Serial Number"
+commands.ticketinfo.field_title.guild_id: "Guild ID"
+commands.ticketinfo.field_title.channel: "Channel"
+commands.ticketinfo.field_title.author: "Author"
+commands.ticketinfo.field_title.archived: "Archived"
+commands.ticketinfo.field_title.pending: "Is Pending (waiting for information)"
+commands.ticketinfo.field_title.invoice_generated: "Invoice Generated"
+commands.ticketinfo.field_title.invoice_id: "Invoice ID"
+commands.ticketinfo.field_title.manager: "Manager Who Claimed"
+commands.ticketinfo.field_title.freelancer: "Assigned Freelancer"
+commands.ticketinfo.field_title.complete: "Complete"
+commands.ticketinfo.field_title.commission_log_mid: "Commission Log Message ID"
+commands.ticketinfo.field_title.created_at: "Created At"
+commands.ticketinfo.field_title.updated_at: "Updated At"
+
+# /invoice create
+commands.invoice.create.errors.existing_active_invoice: |
+  A pending invoice is already already active for this order.
+  Please either cancel it with `/invoice cancel` or mark it as paid using `/invoice markpaid`.
+commands.invoice.create.errors.must_be_gt_0: "The amount must be greater than $0."
+commands.invoice.create.errors.must_be_lt_10000: "The amount must be less than $10,000."
+commands.invoice.create.errors.all_gateways_disabled: "All payment gateways are currently disabled."
+commands.invoice.create.errors.generic: | # Available placeholders: {message}
+  An error occurred while creating the invoice.
+  Please check console for more details.
+  `Error: ${message}`
+commands.invoice.create.successful: "Invoice for **${price}** created!" # Available placeholders: {price} {id}
+# /invoice cancel
+commands.invoice.cancel.errors.no_invoice: "This commission ticket does not have an invoice or it has already been paid in full."
+commands.invoice.cancel.successful: "Cancelled the invoice."
+
+# /invoice createpaid
+commands.invoice.createpaid.successful: "Created pre-paid invoice `{newInvoice.id}` for **${price}**." # Available placeholders: {price} {id}
+
+# /invoice link
+commands.invoice.link.errors.no_invoice: "There is no active invoice for this commission."
+
+# /invoice markpaid
+commands.invoice.markpaid.errors.no_invoice: |
+  There is no active invoice for this commission.
+  If you'd like to create a pre-paid invoice, use `/invoice createpaid`.
+commands.invoice.markpaid.errors.already_paid: "The invoice has already been marked as paid."
+commands.invoice.markpaid.successful: "Invoice marked as paid!"
+
+# /invoice refresh
+commands.invoice.refresh.errors.generic: "An error occurred while refreshing the invoice. Check the bot console for details."
+commands.invoice.refresh.errors.no_invoice: "This commission ticket does not have an invoice."
+commands.invoice.refresh.errors.invalid_gateway_type: "This invoice cannot be refreshed as the gateway does not support it."
+commands.invoice.refresh.successful: "Invoice status refreshed. Status: {status}. [[Go to embed]]({link})" # Available placeholders: {status} {link}
+
+# /createprofile
+commands.createprofile.errors.profile_already_exists: "{username} already has a profile." # Available placeholders: {username} {mention}
+commands.createprofile.successful: "Successfully created freelancer's profile."
+
+# /profile
+commands.profile.errors.not_freelancer: "{username} does not have the freelancer role." # Available placeholders: {mention} {username}
+
+# /reviews
+commands.reviews.no_reviews: "{username} has no reviews." # Available placeholders: {username} {mention}
+commands.reviews.title: "Reviews of {username} ({review_count} review(s), {average_stars})" # Available placeholders: {username} {mention} {review_count} {average_stars}
+
+# /set bio
+commands.set.bio.errors.exceeded_500: "Your bio must be less than 500 characters."
+commands.set.bio.successful: "Your bio has been updated to `{value}`." # Available placeholders: {value}
+
+# /set paypal
+commands.set.paypal.errors.exceeded_50: "Your email must be less than 50 characters."
+commands.set.paypal.successful: "PayPal has been set to `{value}`." # Available placeholders: {value}
+
+# /set portfolio
+commands.set.portfolio.errors.invalid_url: "This is an invalid link. Please provide a valid http/https link."
+commands.set.portfolio.successful: "Portfolio link updated to `{value}`." # Available placeholders: {value}
+
+# /set techstack
+commands.set.techstack.errors.exceeded_100: "Your tech stack must be less than 100 characters."
+commands.set.techstack.successful: "Your tech stack has been updated to `{value}`." # Available placeholders: {value}
+
+# /set timezone
+commands.set.timezone.successful: "Timezone has been set to {value}." # Available placeholders: {value}
+
+# /viewpaypal
+commands.viewpaypal.errors.profile_not_created: "{username} doesn't have their profile created." # Available placeholders: {username} {mention}
+commands.viewpaypal.errors.paypal_not_set: "{username} has not set a PayPal email address." # Available placeholders: {username} {mention}
+commands.viewpaypal.successful: "{username}'s PayPal email address is {paypal_email}" # Available placeholders: {username} {mention} {paypal_email}
+
+# /manageticket complete
+commands.forcecomplete.errors.already_complete: "This commission is already marked as complete."
+commands.forcecomplete.successful: "Completed commission #{serial}." # Available placeholders: {serial} {id}
+
+# /manageticket incomplete
+commands.incomplete.errors.not_completed: "This commission is not marked as complete."
+commands.incomplete.successful: "Removed completed status for #{serial}." # Available placeholders: {serial} {id}
+
+# /manageticket repost commission
+commands.repost.errors.already_claimed: "You can't repost a ticket that has been claimed."
+commands.repost.errors.no_responses_data: "None of the ticket's questions were answered."
+commands.repost.successful: "Commission log has been reposted."
+
+# /manageticket repost review
+commands.repostreview.errors.no_review_channel: "There is no review channel set."
+commands.repostreview.errors.no_review_made: "There is no review made for this commission."
+commands.repostreview.successful: "Review reposted."
+
+# /new
+commands.new.errors.generic: "Couldn't make a ticket, because:\n{message}" # Available placeholders: {message}
+commands.new.ticket_created: "{mention}, created the ticket for you.\n[[Jump to]]({link})" # Available placeholders: {mention} {username} {link} {type}
+
+# /transcript
+commands.transcript.errors.generic: "An error occured while generating the transcript.\n{message}" # Available placeholders: {message}
+commands.transcript.generated: "Generated and sent transcript."
+
+# /freelancer assign
+commands.freelancer.assign.errors.generic: "Failed to assign to the ticket: {message}" # Available placeholders: {message}
+commands.freelancer.assign.errors.already_has_freelancer: "This ticket already has a freelancer. Use `/freelancer transfer` to swap the existing freelancer."
+commands.freelancer.assign.successful: "Successfully assigned {username} to the ticket." # Available placeholders: {username} {mention}
+
+# /freelancer unassign
+commands.freelancer.unassign.errors.generic: "Failed to unassign the ticket: {message}" # Available placeholders: {message}
+commands.freelancer.unassign.errors.no_freelancer_assigned: "This ticket does not have a freelancer."
+commands.freelancer.unassign.successful: "Successfully unassigned the freelancer from the ticket."
+
+# /freelancer transfer
+commands.freelancer.transfer.errors.generic: "Failed to transfer the ticket: {message}" # Available placeholders: {message}
+commands.freelancer.transfer.errors.no_freelancer_assigned: "This ticket does not have a freelancer."
+commands.freelancer.transfer.successful: "Successfully transferred the ticket to {username}." # Available placeholders: {username} {mention}
+
+# /add
+commands.add.errors.already_in_ticket: "{username} is already in this ticket." # Available placeholders: {username} {mention}
+commands.add.successful: "{username} has been added to the ticket." # Available placeholders: {username} {mention}
+
+# /remove
+commands.remove.errors.cant_remove_self: "You can't remove yourself from a ticket."
+commands.remove.errors.cant_remove_author: "You can't remove the author of a ticket."
+commands.remove.errors.not_in_ticket: "{username} doesn't have access to this ticket." # Available placeholders: {username} {mention}
+commands.remove.successful: "{username} has been removed from the ticket." # Available placeholders: {username} {mention}
+
+# /archive
+commands.archive.reason_text: "Reason"
+commands.archive.errors.generic: "Couldn't archive: {message}" # Available placeholders: {message}
+commands.archive.errors.requires_manage_guild: "You don't have permission to do that.\nIf you want to cancel, ask support."
+commands.archive.errors.already_archived: "This ticket is already archived."
+commands.archive.errors.time_exceeds_30_days: "Time cannot be longer than 30 days."
+commands.archive.errors.time_exceeds_1_min: "Time cannot be less than 1 minute."
+commands.archive.scheduled.sending_will_cancel: "Sending any message will cancel this."
+commands.archive.scheduled.successful: "This ticket has been scheduled to archive in {relative}." # Available placeholders: {relative}
+commands.archive.successful: "Successfully archived."
+
+# /unarchive
+commands.unarchive.errors.requires_manage_guild: "You don't have permission to do that.\nIf you want to cancel, ask support."
+commands.unarchive.errors.not_archived: "This ticket is not archived."
+commands.unarchive.scheduled_removed: "The archive has been removed from the schedule."
+commands.unarchive.successful: "Successfully unarchived."
+
+# /questions
+commands.questions.errors.no_data: "None of the ticket's questions were answered."
+commands.questions.embed_title: "Answers for #{serial}" # Available placeholders: {id} {serial}
+
+# /currency
+commands.currency.errors.generic: "Something went wrong while converting the currency." # Available placeholders: {message}
+commands.currency.errors.invalid_currency: "Either of the currency types are incorrect."
+
+# /embed
+commands.embed.errors.generic: "Error occured when creating:\n{message}" # Available placeholders: {message}
+commands.embed.errors.invalid_embed: "You must set either the description, title or author name."
+commands.embed.successful: "Created embed."
+
+# Deny withdraw button
+withdrawal.deny.errors.already_denied: "This withdrawal request has already been completed or denied."
+withdrawal.deny.errors.invalid_user: "The user who created this withdrawal requests is invalid. Can't proceed."
+withdrawal.deny.successful: "Withdrawal request {id} denied." # Available placeholders: {id}
+
+# Complete withdraw button
+withdrawal.submit.errors.already_complete: "This withdrawal request does not exist anymore."
+withdrawal.submit.errors.invalid_user: "The user who created this withdrawal requests is invalid. Can't proceed."
+withdrawal.submit.successful: "Withdrawal request {id} completed." # Available placeholders: {id}
+
+# Commission completion accept/denial/review
+completion.errors.not_author: "Only the author of this ticket can accept, deny or review the commission."
+
+# Accept commission completion
+completion.accept.errors.already_complete: "This ticket has been marked as complete already."
+completion.accept.successful.title: "Delivery has been accepted by the customer."
+completion.accept.successful.content: "The order has been finalized. You can leave a review for the freelancer below."
+
+# Deny commission completion
+completion.deny.reason_modal_title: "Deny the delivery:"
+completion.deny.reason_modal_field_label: "Reason for denying:"
+completion.deny.errors.timed_out: "Reason for denial was not provided in time. Cancelled."
+completion.deny.errors.already_complete: "You already accepted this delivery.\nPlease contact support to resolve any issues."
+completion.deny.successful: "Successfully denied the delivery."
+completion.deny.successful.embed_title: "The delivery has been denied."
+completion.deny.successful.reason_for_denying: "Reason for denial"
+
+# Review commission completion
+completion.review.errors.not_accepted: "Before reviewing, please complete the order by accepting the delivery."
+completion.review.modal_field_message_label: "Message:"
+completion.review.modal_field_anynomous_label: "Anonymous review? ('y' or leave blank):"
+completion.review.modal_title: "Leave a review ({stars} stars):" # Available placeholders: {stars}
+completion.review.successful.embed_title: "Thank you for your feedback."
+completion.review.successful: "You have rated the freelancer {stars} out of 5 stars." # Available placeholders: {stars}
+completion.review.review_in_ticket: "This ticket has been rated ⭐ **{stars} out of 5** by {mention}." # Available placeholders: {mention} {username} {stars}
+
+completion.bank.dm_notification.title: "Your bank balance has changed."
+completion.bank.dm_notification: "You have been accredited **${amount}** for the delivery of the commission.\nUse `/bank transactions` to view all transactions."
+completion.bank.label_new_balance: "New Balance"
+
+# Invoice generation
+# NOTE: These messages are not related to making new invoices. These are used when the "Pay with x" button is clicked. You may find the messages related to making new invoices in the /invoice create section.
+invoice.create.errors.generic: "An error occured while creating the invoice."
+invoice.create.errors.no_invoice: "This invoice does not exist anymore."
+invoice.create.errors.already_paid: "This invoice has already been paid."
+invoice.create.errors.invalid_gateway: "Unknown or unsupported gateway used."
+invoice.create.errors.disabled: "{label} is currently disabled." # Available placeholders: {gateway} {gatewayLabel}
+invoice.create.successful: "Generated the invoice."
+
+# Messaging
+# f2c = freelancer to client - green "Message" button
+# c2f = client to freelancer - gray "Reply" button
+messaging.errors.wrong_service_roles: | # Available placeholders: {service_name}
+  You don't have the required role to message to this type of commission.
+  This is a commission for `{service_name}`.
+messaging.f2c.modal_field_message_label: "Message:"
+messaging.f2c.modal_title: "Send a message:"
+messaging.f2c.successful: "Message sent."
+messaging.f2c.message: "Message from freelancer ({service}-{serial} {freelancer_username})" # Available placeholders: {service} {serial} {freelancer_username} {freelancer_mention}
+messaging.f2c.button_label: "Click to Reply"
+
+messaging.c2f.modal_field_message_label: "Message:"
+messaging.c2f.modal_title: "Reply to a message:"
+messaging.c2f.message: "Response from client ({service}-{serial} {client_username})" # Available placeholders: {service} {serial} {client_username} {client_mention}
+messaging.c2f.successful: "Message sent."
+messaging.c2f.button_label: "Message"
+
+# Quoting
+quoting.errors.wrong_service_roles: | # Available placeholders: {service_name}
+  You don't have the required role to quote this type of commission.
+  This is a commission for `{service_name}`.
+# profile & bio enforced only when config.profiles.enforceSetupToQuote is true
+quoting.errors.no_profile: "You don't have a profile set up. Before creating a quote, please at least set your bio using /set."
+quoting.errors.no_bio: "You don't have a bio set up. Before creating a quote, please at least set your bio using /set."
+quoting.errors.already_claimed: "This commission has already been claimed by a freelancer."
+quoting.errors.message_wasnt_created: "Something went wrong while sending the quote message."
+quoting.modal_field_quote_label: "Your quote:"
+quoting.modal_field_attached_msg_label: "Optional message to add to your quote:"
+quoting.modal_title: "Create a quote:"
+quoting.successful: "You successfully quoted ${quote} for this commission." # Available placeholders: {quote}
+quoting.create.button_label: "Create Quote"
+
+quoting.quote.title: "Incoming Quote"
+quoting.quote.field_label_portfolio: "Portfolio"
+quoting.quote.field_label_timezone: "Timezone"
+quoting.quote.field_label_techstack: "Tech Stack"
+quoting.quote.field_label_bio: "Bio"
+quoting.quote.message_from_freelancer: "Message from freelancer:"
+quoting.quote.button.accept_label: "Accept ${price}" # Available placeholders: {price}
+quoting.quote.button.decline_label: "Decline" # Available placeholders: {price}
+quoting.quote.button.counteroffer_label: "Counteroffer" # Available placeholders: {price}
+quoting.quote.tag.accepted: "[ACCEPTED]"
+quoting.quote.tag.declined: "[DECLINED]"
+quoting.quote.tag.counteroffered: "[COUNTEROFFERED]"
+
+# Responding to quotes
+quoting.responding.errors.quote_invalid: "This quote was deleted. Please wait for a new one."
+quoting.responding.errors.not_author: "You can't respond to this quote."
+quoting.responding.errors.freelancer_invalid: "This freelancer doesn't exist anymore."
+quoting.responding.errors.commission_already_assigned: "This commission has got another quote that was accepted already. If you want to switch, contact support."
+
+quoting.accept.dm_notification: | # Available placeholders: {client_mention} {client_username} {quote}
+  {client_mention} has __accepted__ your quote of ${quote}.
+  The commission is now assigned to you.
+
+# Deny commissions
+commissions.deny.button_label: "Deny: {reason}" # Available placeholders: {reason}
+commissions.deny.modal_title: "Deny the commission:"
+commissions.deny.modal_field_reason_label: "Reason for denying:"
+commissions.deny.success: "Commission denied."
+commissions.deny.errors.already_denied: "You have already denied this commission."
+
+commissions.deny.rejoin: "Rejoin"
+commissions.deny.rejoined: "Successfully rejoined the commission quote."
+
+quoting.deny.preset_reason.1: "Not interested"
+quoting.deny.preset_reason.2: "Low price"
+quoting.deny.preset_reason.3: "Not my expertise"
+quoting.deny.preset_reason.custom: "Custom"
+
+quoting.deny.reason_text: "Reason"
+quoting.deny.provide_reason: "Please provide a reason for declining this offer"
+quoting.deny.timed_out: "Declining the quote timed out."
+quoting.deny.dm_notification: "{client_mention} has __declined__ your quote of ${quote}." # Available placeholders: {client_mention} {client_username} {quote}
+quoting.deny.successful: "Successfully sent a decline information to the freelancer."
+
+# Logs
+quoting.deny.log.title: "Quote Declined"
+quoting.deny.fields.ticket: "Ticket"
+quoting.deny.fields.quote_channel: "Quote Channel"
+quoting.deny.fields.freelancer: "Freelancer"
+quoting.deny.fields.reason: "Reason"
+
+quoting.counter.modal_title: "Conuteroffer a quote of ${quote}:" # Available placeholders: {quote}
+quoting.counter.modal_field_price_label: "Your suggested price:"
+quoting.counter.dm_notification:
+  | # Available placeholders: {client_mention} {client_username} {quote} {suggested_price}
+  {client_mention} has __declined__ your quote of ${quote}.
+  **Suggested price:** ${suggested_price}
+quoting.counter.successful: "Successfully sent a counteroffer offer."
+# Profile panel
+panel.profile.lookup.search: "Search by username or ID..."
+panel.profile.lookup.other.modal_title: "Lookup other's profile"
+panel.profile.lookup.other.modal_field_user_label: "User:"
+
+panel.profile.set.bio.label: "Bio:"
+panel.profile.set.bio.title: "Edit your bio"
+panel.profile.set.bio.placeholder: "Type in a brief description about yourself..."
+panel.profile.set.portfolio.label: "Portfolio URL:"
+panel.profile.set.portfolio.title: "Edit your portfolio URL"
+panel.profile.set.portfolio.placeholder: "Type in your portfolio URL..."
+
+panel.profile.set.techstack.label: "Tech stack:"
+panel.profile.set.techstack.title: "Edit your tech stack"
+panel.profile.set.techstack.placeholder: "Type in your tech stack..."
+
+panel.profile.set.timezone.label: "Timezone:"
+panel.profile.set.timezone.title: "Edit your timezone:"
+panel.profile.set.timezone.placeholder: "Type in your timezone (formatted like: +01:00)..."
+
+panel.profile.set.paypal.label: "PayPal email:"
+panel.profile.set.paypal.title: "Edit your PayPal email"
+panel.profile.set.paypal.placeholder: "Type in your PayPal email..."
+
+customerpanel.placeholder: "Manage your ticket"
+customerpanel.action.add.label: "Add a user"
+customerpanel.action.add.description: "Authorize someone to see this ticket."
+customerpanel.action.remove.label: "Remove a user"
+customerpanel.action.remove.description: "Remove someone you added from the ticket."
+
+customerpanel.errors.not_valid_ticket: "This is not a valid ticket."
+
+customerpanel.action.add.title: "Add a user"
+customerpanel.action.add.field_label_user: "User"
+customerpanel.action.add.field_placeholder_user: "Search a user by username or ID..."
+customerpanel.action.add.errors.user_invalid: "Member not found."
+
+customerpanel.action.remove.title: "Add a user"
+customerpanel.action.remove.field_label_user: "User"
+customerpanel.action.remove.field_placeholder_user: "Search a user by username or ID..."
+customerpanel.action.remove.errors.user_invalid: "Member not found."
+customerpanel.action.remove.errors.cant_remove_higher: "You can't remove someone with a higher role than you."
+customerpanel.action.remove.errors.cant_remove_manager: "You can't remove managers."
+customerpanel.action.remove.errors.cant_remove_assigned_freelancer: "You can't remove the assigned freelancer. Please ask a manager to unassign or transfer."
+
+profile.embed.title: "Profile of {username}" # Available placeholders: {mention} {username}
+profile.embed.field_label_portfolio: "Portfolio Link"
+profile.embed.field_label_timezone: "Timezone"
+profile.embed.field_label_techstack: "Tech Stack"
+profile.embed.field_label_completed_commissions: "Completed Commissions"
+profile.embed.field_label_freelancer_since: "Freelancer Since"
+profile.embed.field_label_reviews_average: "Reviews Average"
+profile.embed.tip: "Tip: Use /reviews <@freelancer> to view all of a freelancer's reviews."
+
+invoice.invoice_title: "Invoice"
+invoice.invoice_for_price: "Invoice for **{price} {currency}**" # Available placeholders: {price} {currency}
+invoice.invoice_description: "Please select a payment method below to proceed."
+invoice.update.partially_paid: "A partial payment for the invoice received. New total: `{symbol}{paid_amount}` / `{symbol}{total}`." # Available placeholders: {symbol} {total} {paid_amount}
+invoice.update.fully_paid: "The invoice for `{symbol}{total}` has been paid in full." # Available placeholders: {symbol} {total}
+# Notes & texts passed to gateways:
+invoice.gateway_note: "Payment for {ticket_name}." # Available placeholders: {ticket_name} - Displayed directly in the payment provider
+invoice.amount: "Amount"
+invoice.handling_fee: "Handling Fee"
+invoice.total: "Total"
+invoice.status: "Status"
+invoice.cancelled: "Cancelled"
+invoice.paid_text: "paid"
+invoice.paid_tag: "[Paid]"
+invoice.view_in_browser_label: "View in Browser"
+
+action.manager_made_ticket_for_you: "{target_mention}, {creator_mention} has made a support ticket for you." # Available placeholders: {target_username} {target_mention} {creator_username} {creator_mention}
+
+withdrawal.button_label.mark_as_complete: "Mark as Complete"
+withdrawal.button_label.deny: "Deny"
+withdrawal.embed_title: "Withdrawal request from {username}" # Available placeholders: {username} {mention}
+withdrawal.field_label_status: "Status"
+withdrawal.field_label_amount: "Amount"
+withdrawal.field_label_current_balance: "Current Balance"
+withdrawal.field_label_balance_after: "Balance After"
+withdrawal.field_label_paypal_email: "PayPal Email"
+withdrawal.all_balance_note: "(all balance)"
+withdrawal.label_pending: "Pending"
+withdrawal.label_completed: "Complete"
+withdrawal.label_denied: "Denied"
+withdrawal.errors.invalid_withdrawal: "This withdrawal request is invalid."
+withdrawal.completed.transaction_note: "Completed withdrawal `#{id}`." # Available placeholders: {id}
+withdrawal.completed.dm_notification.title: "Your bank balance has changed."
+withdrawal.completed.dm_notification: "Your withdrawal request `{id}` has been marked as complete. We've deducted **${amount}** from your balance." # Available placeholders: {id} {amount}
+withdrawal.denied.dm_notification.title: "Withdrawal request denied."
+withdrawal.denied.dm_notification: "Your withdrawal request `{id}` has been denied by a manager." # Available placeholders: {id}
+
+web.created_from_dashboard_title: "Created via dashboard."
+web.created_from_dashboard: "**Attached description:**\n{description}"

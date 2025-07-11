@@ -1,0 +1,36 @@
+panel:
+  title: "Create a ticket" # Since 2.18.0, you can now remove this line if you don't want a title.
+  color: 0xf89903
+  imageUrl: "https://media.discordapp.net/attachments/923189263569403925/943810909132951582/bannerr3.png" # Since 2.18.0, you can now remove this line if you don't want an image.
+  description: "Example description" # Since 2.18.0, you can now remove this line if you don't want a description.
+  buttons:
+    commission:
+      label: "Commission"
+      emoji: "<:commission:943811867338502204>"
+    application:
+      label: "Application"
+      emoji: "<:apply:943811882702241802>"
+    support:
+      label: "Support"
+      emoji: "<:support:943811853417607208>"
+
+embeds:
+  footer: "Light Services"
+  colors:
+    # Hex values for embed colors.
+    # They must be prefixed with `0x`.
+    normal: 0xed9924
+    error: 0xc44242
+    success: 0x42c460
+
+buttons:
+  emojis:
+    # This emoji is used in the "Archive" button
+    archive: "🗑️"
+    # This emoji is used in the "Unarchive" button
+    unarchive: "📥"
+    # These emojis are used under commission logs respectively for quoting and messaging.
+    quote: "💵"
+    message: "✉️"
+    # This emoji is used for the button to cancel ticket creation
+    cancel: "❌"

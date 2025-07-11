@@ -1,0 +1,91 @@
+# Select which ticket types are enabled.
+# Disabled ticket types will be absent from the panel.
+enabled:
+  commissions: true
+  applications: true
+  support: true
+
+# Set a global cooldown for creating tickets.
+# Set to 0 to disable.
+cooldown: 60 # sec
+
+# Set the channel name templates to which ticket channels are made.
+# Placeholders available.
+channelNameTemplates:
+  commissions: "{SERVICE}-{SERIALID}"
+  applications: "{TYPE}-{SERIALID}"
+  support: "{TYPE}-{SERIALID}"
+  pending: "pending-{SERIALID}"
+  archived: "archived-{SERIALID}"
+  quote: "quote-{USERNAME}"
+
+allowInvoicesOutsideCommissions: true
+
+# Customize archive behavior.
+archive:
+  # If you want the ticket channel to:
+  # be moved to a category - set to "categorize"
+  # be deleted - set to "delete"
+  # left as is - set to "none"
+  action: "delete"
+  # Whether or not regular users can archive their tickets.
+  requireManageGuild: true
+  # Upon archival, should a copy of the transcript be sent to the ticket author?
+  sendTranscriptToAuthorDms: false
+
+# Control transcripts
+transcripts:
+  # Enable the bot downloading each attachment sent within your server to disk. This will make it so links to files in transcripts point to your API instead of the unreliable Discord's CDN.
+  downloadAttachments: true
+  # Whether or not to include deleted messages in the transcript.
+  includeDeletedMessages: true
+
+# Set how much of the revenue is given to the service (you). The rest will be given to the freelancer.
+# By default the cut is 15% service, 85% freelancer.
+serviceCut: 15 # %
+
+# Set whether or not /complete can be executed without a paid invoice.
+allowCompletionWithoutInvoice: true
+
+# Set whether or not a "Cancel Creation" button is shown during ticket creation.
+allowPromptCancellation: true
+
+# Enable the user mention upon ticket creation.
+enableMentionOnCreate: true
+# Whether or not to send the embed prompting the user to enable or disable mentions about quotes & messages in their ticket (the "ping preference" embed).
+sendPingPrefSelection: true
+# Whether or not to send a reminder to the user when no quotes come for a prolonged time.
+sendReminderAboutNoQuotes: true
+
+# Minimum and maximum roles chosen when applying for a role.
+applicationMinimumSelectedRoles: 1
+applicationMaximumSelectedRoles: 5
+
+reviews:
+  # Amount of reviews per page when executing /reviews.
+  amountPerPage: 10
+
+profiles:
+  displayTip: true
+  enforceSetupToQuote: true
+
+trials:
+  footer: "Note: This __will not__ be sold or redistributed in any way. It is purely for testing the freelancer's ability.\n**Good luck!**"
+  reminders:
+    enabled: true
+    interval: 24
+  list:
+    - name: "Bot Developer"
+      deadline: 96
+      content: |
+        Please create a bot called "EconBot" that has the following commands:
+        - /balance - shows balance of the user
+        - /pay <@user> <amount> - transfers money to others
+        - /buy <price> - subtracts that amount of user balance as if the user has bought something (nothing else needs to be done, just subtraction) (make sure the user has more money than he's spending)
+        - /add <user> <amount> - adds money
+
+        **Name**: EconBot
+        **Database:** any [JSON allowed]
+        **Language:** JavaScript (discord.js, eris), Python (discord.py), Java (JDA), C# (Discord.Net) or Rust (serenity.rs)
+        **Deadline:** {DEADLINE} ({DEADLINE_DATE})
+        **Preview:** Option 1. Host the bot from your PC or VPS (/VDS) and give us a public invite link to preview the bot, Option 2. Give us the source code.

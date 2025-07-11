@@ -1,0 +1,76 @@
+# Questions that are going to be asked in a new tickets - respectively: commissions, applications and support.
+# If empty, the ticket is going to be created without any questions.
+
+commissions:
+  - label: "Deadline"
+    type: "select menu"
+    description: "Please select the maximum timespan for the commission."
+    selectMenuData:
+      placeholder: "Select a deadline..."
+      options:
+        - label: "<1 day"
+        - label: "1-3 days"
+        - label: "3-7 days"
+        - label: "7-14 days"
+        - label: "14-30 days"
+        - label: "30+ days"
+
+  - label: "Budget"
+    type: "budget"
+    description: 'In USD, type in the budget for your project. Reply "quote" if you want to get a quote.'
+
+  - label: "Description"
+    type: "text"
+    description: "Please provide a detailed description of the service you need."
+    max: 1000
+
+  - label: "References"
+    type: "text"
+    description: "Supply any references and examples for this project, like links, images, videos, etc.:"
+    max: 500
+
+  - label: "Additional Information"
+    type: "text"
+    description: "Would you like to add anything else?"
+    max: 500
+
+applications:
+  - type: "text"
+    label: "Experience Length"
+    description: "*How long have you been doing this (these)?*"
+    max: 1000
+  - type: "text"
+    label: "Built By Bit Account"
+    description: "*If you have one, what is your Built By Bit (formerly MC-Market) account?*"
+    max: 500
+  - type: "text"
+    label: "Portfolio"
+    description: "*What is your portfolio link (if any)?\nPlease remember that it's unlikely that we'll accept you if you don't provide one.*"
+    max: 100
+  - type: "text"
+    label: "Country & Timezone"
+    description: "*Where are you from and what is your timezone?*"
+    max: 500
+  - type: "text"
+    label: "Freelancing Experience"
+    description: "*Have you got any experience in freelancing?*"
+    max: 500
+  - type: "text"
+    label: "Past Teams"
+    description: "*What teams have you previously worked with?*"
+    max: 500
+  - type: "text"
+    label: "Languages"
+    description: "*What languages do you speak? Rate your skills in each in a scale 1-10.*"
+    max: 500
+  - type: "text"
+    label: "Notes"
+    description: "*Would you like to add anything else?*"
+    max: 500
+    id: "notes"
+
+support:
+  - type: "text"
+    label: "Description"
+    description: "Please provide a detailed description of the issue you're having."
+    max: 1000

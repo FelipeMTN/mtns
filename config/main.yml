@@ -1,0 +1,105 @@
+# Your bot token from https://discord.dev/
+token: "YOUR BOT TOKEN"
+
+# Database connection URL
+dbUrl: "sqlite://database.db"
+#dbUrl: "YOUR SQL DATABASE URL"
+
+# Locale file to use. Must match config/locales/*.yml.
+language: "en-US"
+dynamicLanguage: true
+
+# The bot will only work in these guilds. If the list is empty, the bot will work in any guild.
+# It is highly recommended to add your guild(s) ID(s) to this list.
+# The language the bot uses. Has to exist in data/locales.
+guilds:
+  - "YOUR GUILD ID"
+
+# Owners are people who can use /eval.
+# This is a VERY DANGEROUS PERMISSION TO GRANT!
+# Give it out only to yourself and people you trust.
+owners:
+  - "YOUR USER ID"
+
+# Sends a request to update the slash commands. Recommended `true` for production and `false` for development.
+updateCommands: true
+
+# The bot status & activity
+status:
+  status: "online" # allowed "online", "dnd", "idle", "invisible"
+  activity: "" # keep empty ("") to disable activity
+
+process:
+  # Whether or not to "force synchronize".
+  # Setting this to:
+  # - true: will drop all tables and re-create them;
+  # - false: will only create tables that don't exist or try to alter existing tables.
+  # This is useful for development, but should be set to false in production.
+  # Optional
+  purgeDatabaseOnRun: false
+
+  logging:
+    # Logs level. Possible values: "minimal", "normal", "debug".
+    level: "normal"
+    # Whether or not to log Discord.js websocket debug. Toggling this to on may flood the log after a long period of time.
+    connectionDebug: false
+    # Whether or not to log database queries. Toggling this to on may flood the log after a long period of time.
+    databaseDebug: false
+    # Whether or not to log handler debug logs, like commands used & components clicked.
+    handlerDebug: false
+    # Discord webhook URL to send logs to.
+    # webhookUrl: ""
+
+# The bot comes with a built-in REST API server.
+# It's used for receiving payment notification webhooks and can be used for other purposes, like a custom web panel for example.
+api:
+  url: "http://localhost:2020"
+  port: 2020
+  keys:
+    - "YOUR SECRET KEY"
+  ssl:
+    # Whether or not to use SSL (HTTPS) for the API.
+    # If enabled, you must provide a certificate and a key.
+    enabled: false
+    # Port for HTTPS to listen on.
+    port: 2021
+    # Path to the SSL certificate file.
+    cert: "./cert.pem"
+    # Path to the SSL key file.
+    key: "./key.pem"
+  # This section toggles the availability of various endpoints
+  endpoints:
+    tickets:
+      enabled: true
+    transcripts:
+      enabled: true
+    bank:
+      enabled: true
+    users:
+      enabled: true
+# The other options have been moved to their respective files under the config directory.
+
+# Configuration for the AI
+ai:
+  # Whether or not the AI functionality is made available to users.
+  enabled: true
+  # Available models:
+  # Ollama (requires Ollama on the local system): gemma3, phi4, llama3.2, deepseek-r1 and any model available on https://ollama.com/search.
+  #   You may specify the parameter count by adding :<X>b to the model name, for example gemma3:4b for the 4 billion parameter Gemma model.
+  # OpenAI (requires `openaiKey`): gpt-3.5-turbo, gpt-4o and any model available on https://platform.openai.com/docs/models.
+  model: "llama3.2"
+  # The amount of past messages to send back to the AI.
+  # Watch out though, setting this value too high may result in:
+  # - Much more expensive API calls
+  # - Slower response times
+  # - Higher memory usage by the bot
+  # A history length of 5 is recommended for small PCs and 10 for larger PCs.
+  historyLength: 10
+  # The maximum amount of messages a single user can send within a single hour.
+  rateLimitPerHr: 5
+  # You can provide useful context to the AI by setting a system message.
+  systemText: |
+    You are a helpful assistant. You will be asked questions and you should answer them as best as you can. If you don't know the answer, say "I don't know". If the question is not clear, ask for clarification. You should also be polite and respectful at all times.
+  openai:
+    # If any of the GPT models are picked in the `model` field, you need to provide an OpenAI API key.
+    key: "YOUR_OPENAI_API_KEY"

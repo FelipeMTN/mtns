@@ -1,0 +1,64 @@
+# Here you can define what you want to be available for application as well as when creating a commission.
+# Each object consists of:
+
+# Service name - displayed name
+# Short ID - a short text, usually a lowercase version of the display name, that must be unique - required for inner functionality
+# Role Description - description as shown in dropdown menu
+# Discord Role ID - the Discord role with this ID will be pinged when a new commission is created
+# Channel name - used in ticket.channelName as {SERVICE}) for this role (optional, otherwise grabbed from the ID)
+# Dropdown Emoji - the icon in the dropdown menu for commission & application tickets
+
+- name: "Front-End Web Developer"
+  id: "frontwebdev"
+  description: "Website design (HTML & CSS)."
+  roleId: "FRONTEND ROLE ID"
+  channelName: "frontend"
+  dropdownEmoji: "🖥️"
+
+- name: "Back-End Web Developer"
+  id: "backwebdev"
+  description: "Back-end web development."
+  roleId: ""
+  channelName: "backend"
+  dropdownEmoji: "🔗"
+
+- name: "Full-Stack Web Developer"
+  id: "webdev"
+  description: "Website design & web servers combined."
+  roleId: ""
+  channelName: "fullstack"
+  dropdownEmoji: "📝"
+
+- name: "Bot Developer"
+  id: "botdev"
+  description: "Discord bot development."
+  roleId: ""
+  channelName: "bot"
+  dropdownEmoji: "🤖"
+
+- name: "GFX & Illustration"
+  id: "gfx"
+  description: "Graphics, logos and handdrawn designs."
+  roleId: ""
+  channelName: "gfx"
+  dropdownEmoji: "🖌️"
+
+- name: "Plugin Developer"
+  id: "plugindev"
+  description: "Minecraft: Java Edition server plugins development."
+  roleId: ""
+  channelName: "plugin"
+  dropdownEmoji: "🧩"
+
+- name: "Builder"
+  id: "builder"
+  description: "Minecraft building services."
+  roleId: ""
+  channelName: "builder"
+  dropdownEmoji: "📦"
+
+- name: "Other"
+  other: true
+  id: "other"
+  description: "Other services. Every freelancer can quote."
+  channelName: "other"

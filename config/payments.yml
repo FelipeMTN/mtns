@@ -1,0 +1,67 @@
+# Sample configuration for PayPal. Only used if extensions/paypal.ext is loaded.
+paypal:
+  name: "PayPal"
+  buttonLabel: "Pay with PayPal"
+  buttonSort: 1
+  useSandbox: true
+  clientId: "YOUR PAYPAL CLIENT ID"
+  clientSecret: "YOUR PAYPAL CLIENT SECRET"
+  merchantName: "YOUR COMPANY NAME"
+  merchantEmail: "YOUR EMAIL"
+  enablePartialPayments: true
+  minimumDuePercentage: 50
+  handlingFee: 0.1
+  currency: "USD"
+  paymentNotifications:
+    # This determines how the bot will receive payment updates from PayPal.
+    # "polling" will have the bot check for new payments every minute.
+    # "webhook" will have PayPal send payment updates to the bot.
+    # The "webhook" solution is generally more sophisticated, but much harder to set up.
+    # Therefore, if you don't know what you're doing, it is recommended to use polling.
+    # Keep in mind that using `polling` here will not disable webhooks, so you may use both.
+    type: "webhook" # "polling" or "webhook"
+    # If type is "webhook", point PayPal to send webhook events to https://{api_url}/ipn/paypal
+    # and fill in the below webhookId
+    webhookId: "YOUR WEBHOOK ID IF USING WEBHOOK"
+
+# Sample configuration for PayPal WebScr (email-only). Only used if extensions/paypalwebscr.ext is loaded.
+# Does not support payment notifications and will not update.
+paypalwebscr:
+  name: "PayPal Webscr"
+  buttonLabel: "Pay with PayPal Webscr"
+  buttonSort: 2
+  email: "YOUR EMAIL"
+  handlingFee: 0.1
+  returnUrl: "https://stripe.nortexdev.com"
+  cancelUrl: "https://stripe.nortexdev.com"
+  currency: "USD"
+
+# Sample configuration for Coinbase Commerce. Only used if extensions/coinbase.ext is loaded.
+coinbase:
+  name: "Coinbase Commerce"
+  buttonLabel: "Pay with Coinbase Commerce"
+  buttonSort: 3
+  apiKey: "YOUR API KEY"
+  handlingFee: 0.1
+  currency: "USD"
+  paymentNotifications:
+    # Refer to comments in the PayPal payment notifications section for more information.
+    type: "webhook" # "polling" or "webhook"
+    # Global webhook shared secret from Coinbase Commerce
+    webhookSharedSecret: "YOUR WEBHOOK SHARED SECRET"
+
+# Sample configuration for Stripe. Only used if extensions/stripe.ext is loaded.
+stripe:
+  name: "Stripe"
+  buttonLabel: "Pay with Stripe"
+  buttonSort: 4
+  useSandbox: true # Use 'false' in production
+  publishableKey: "YOUR STRIPE PUBLISHABLE KEY"
+  secretKey: "YOUR STRIPE SECRET KEY"
+  handlingFee: 0.1
+  currency: "USD"
+  paymentNotifications:
+    # Refer to comments in the PayPal payment notifications section for more information.
+    type: "webhook" # "polling" or "webhook"
+    # Webhook signing secret from Stripe
+    webhookSigningSecret: "YOUR WEBHOOK SIGNING SECRET"
